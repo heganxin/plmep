@@ -1,20 +1,28 @@
-/**
- * Created by heganxin on 2019/2/18.
- */
-import Cookies from 'js-cookies'
+import Cookies from 'js-cookie'
 
-export function setName (name) {
-  return Cookies.set('name', name)
-}
-export function getName () {
-  return Cookies.get('name')
-}
-export function setToken (token) {
-  return Cookies.set('token', token)
-}
+const TokenKey = 'User-Token'
+const UserCode = 'UserCode'
+
 export function getToken () {
-  return Cookies.get('token')
+  return Cookies.get(TokenKey)
 }
+
+export function setToken (token) {
+  return Cookies.set(TokenKey, token)
+}
+
 export function removeToken () {
-  return Cookies.remove('token')
+  return Cookies.remove(TokenKey)
+}
+
+export function setUserCode (usercode) {
+  return Cookies.set(UserCode, usercode, { expires: 7 })
+}
+
+export function getUserCode () {
+  return Cookies.get(UserCode)
+}
+
+export function removeUserCode () {
+  return Cookies.remove(UserCode)
 }
