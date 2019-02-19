@@ -4,12 +4,8 @@
     <h2>Essential Links</h2>
     <ul>
       <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
+        <el-button type="primary">{{$t('m.music')}}</el-button>
+
       </li>
       <li>
         <a
@@ -86,6 +82,9 @@
 <script>
 export default {
   name: 'HelloWorld',
+  created () {
+    this.$i18n.locale = 'en'
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
