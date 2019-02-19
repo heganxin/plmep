@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+import { setToken } from '@/utils/auth' // getToken from cookie
 export default {
   name: 'login',
   Created: function () {
@@ -57,6 +58,7 @@ export default {
       } else {
         this.$store.commit('SET_USERINFO', {name: '姚远'})
         this.$store.commit('SET_ISLOGIN', true)
+        setToken('12313')
         this.$router.push({ path: '/home' })
         this.loading = true
       }

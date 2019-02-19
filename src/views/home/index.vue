@@ -1,7 +1,6 @@
 <template>
     <div class="app-container">
-      <h2><button>gogogogo</button></h2>
-      <router-view></router-view>
+      <button>gogogogogogogogo</button>
     </div>
 </template>
 <script>
