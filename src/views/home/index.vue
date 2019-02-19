@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
-      <button @click="handleClick">404</button>
-      <button @click="handleClick">404</button>
+      <h2><button>gogogogo</button></h2>
+      <router-view></router-view>
     </div>
 </template>
 <script>

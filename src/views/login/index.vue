@@ -41,7 +41,6 @@
 export default {
   name: 'login',
   Created: function () {
-    this.$store.commit('SET_ISLOGIN', false)
   },
   mounted: function () {
   },
