@@ -39,16 +39,20 @@
 </template>
 <script>
 import { setToken } from '@/utils/auth' // getToken from cookie
+// import { login } from '@/api/login'
+
 export default {
   name: 'login',
   Created: function () {
   },
   mounted: function () {
+    this.langValue = this.$store.getters.guojihua === 'zh' ? '中文' : 'English'
   },
   methods: {
     langChage (command) {
       this.langValue = command === 'zh' ? '中文' : 'English'
       this.$i18n.locale = command
+      this.$store.commit('SET_GUOJIHUA', command)
     },
     handleLogin () {
       if (!this.temp.username) {
@@ -56,6 +60,10 @@ export default {
       } else if (!this.temp.password) {
         this.$message(this.$t('validate.password'))
       } else {
+        /* login('admin', 'admin').then(r => {
+          console.log('r', r)
+          setToken('12313')
+        }) */
         this.$store.commit('SET_USERINFO', {name: '姚远'})
         this.$store.commit('SET_ISLOGIN', true)
         setToken('12313')

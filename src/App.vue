@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created: function () {
+    this.$i18n.locale = this.$store.getters.guojihua
+  }
 }
 </script>
 

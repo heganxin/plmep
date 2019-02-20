@@ -3,10 +3,13 @@
  */
 import request from '@/utils/request'
 
-export function login (query) {
+export function login (username, password) {
   return request({
-    url: '/article/list',
-    method: 'get',
-    params: query
+    url: '/netmarkets/jsp/ext/longcheer/common/common.jsp?operation=login',
+    method: 'post',
+    params: {
+      username: username,
+      password: password
+    }
   })
 }

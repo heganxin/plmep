@@ -47,24 +47,63 @@ const permission = {
         const dynamicRouter = [
           {
             cfunid: '1000',
-            fun_code: '1003',
-            redirect: '/huanbao',
+            fun_code: '1001',
+            redirect: '/Mytasks',
             fun_level: 1,
-            fun_name: 'huanbao',
-            funurl: '/weekly',
-            title: '环保',
+            fun_name: '',
+            // funurl: '/fengyang',
+            title: '',
             meta: { title: '环保', icon: 'permission' },
             children: [
               {
                 cfunid: '100010',
-                title: '环保管理',
+                title: '我的任务',
                 fun_level: 2,
                 parent_id: '1000',
-                name: 'huanbaoindex',
-                funurl: '/huanbao/index',
-                meta: { title: '环保管理', icon: 'permission' }
+                name: 'Mytasks',
+                funurl: '/Mytasks',
+                meta: { title: '我的任务', icon: 'permission' }
+              }]
+          }]
+        /* const dynamicRouter = [
+          {
+            cfunid: '1000',
+            fun_code: '1003',
+            redirect: '/fengyang',
+            fun_level: 1,
+            fun_name: 'fengyang',
+            // funurl: '/fengyang',
+            title: '封样',
+            meta: { title: '环保', icon: 'permission' },
+            children: [
+              {
+                cfunid: '100010',
+                title: 'fengyangRoute.myTasks',
+                fun_level: 2,
+                parent_id: '1000',
+                name: 'Mytasks',
+                funurl: '/fengyang/Mytasks',
+                meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
+              },
+              {
+                cfunid: '100020',
+                title: 'fengyangRoute.under_review',
+                fun_level: 2,
+                parent_id: '1000',
+                name: 'under_review',
+                funurl: '/fengyang/under_review',
+                meta: { title: 'fengyangRoute.under_review', icon: 'permission' }
+              },
+              {
+                cfunid: '100030',
+                title: 'fengyangRoute.sealed_Sample',
+                fun_level: 2,
+                parent_id: '1000',
+                name: 'sealed_Sample',
+                funurl: '/fengyang/sealed_Sample',
+                meta: { title: 'fengyangRoute.sealed_Sample', icon: 'permission' }
               }
-            ]}]
+            ]}] */
         // let accessedRouters
         // if (roles.indexOf('admin') >= 0) {
         //   accessedRouters = asyncRouterMap

@@ -3,14 +3,14 @@
     <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
       <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
         :to="tag.path" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
-        {{tag.title}}
+        {{$t(tag.title)}}
         <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
       </router-link>
     </scroll-pane>
     <ul class='contextmenu' v-show="visible" :style="{left:left+'px',top:top+'px'}">
-      <li @click="closeSelectedTag(selectedTag)">关闭</li>
-      <li @click="closeOthersTags">关闭其它</li>
-      <li @click="closeAllTags">关闭全部</li>
+      <li @click="closeSelectedTag(selectedTag)">{{$t('tagsView.close')}}</li>
+      <li @click="closeOthersTags">{{$t('tagsView.closeother')}}</li>
+      <li @click="closeAllTags">{{$t('tagsView.closeall')}}</li>
     </ul>
   </div>
 </template>

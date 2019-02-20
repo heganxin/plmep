@@ -26,6 +26,43 @@ export default new Router({
 })
 export const asyncRouterMap = [
   {
+    path: '/Mytasks',
+    component: Layout,
+    redirect: '/Mytasks',
+    children: [{
+      path: 'Mytasks',
+      component: () => import('@/views/fengyang/Mytasks'),
+      name: 'Mytasks',
+      meta: { title: '我的任务', icon: 'home', noCache: true }
+    }]
+  },
+  {
+    path: '/fengyang',
+    component: Layout,
+    redirect: '/fengyang/index',
+    name: 'fengyang',
+    meta: { title: '封样', icon: 'issue' },
+    children: [
+      {
+        path: 'Mytasks',
+        name: 'Mytasks',
+        component: () => import('@/views/fengyang/Mytasks'),
+        meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
+      },
+      {
+        path: 'under_review',
+        name: 'under_review',
+        component: () => import('@/views/fengyang/Under_Review'),
+        meta: { title: 'fengyangRoute.under_review', icon: 'permission' }
+      },
+      {
+        path: 'sealed_Sample',
+        name: 'sealed_Sample',
+        component: () => import('@/views/fengyang/Sealed_Sample'),
+        meta: { title: 'fengyangRoute.sealed_Sample', icon: 'permission' }
+      }
+    ]
+  }, {
     path: '/huanbao',
     component: Layout,
     redirect: '/huanbao/index',
@@ -33,10 +70,22 @@ export const asyncRouterMap = [
     meta: { title: '环保', icon: 'issue' },
     children: [
       {
-        path: 'huanbaoindex',
-        name: 'huanbaoindex',
-        component: () => import('@/views/huanbao/index'),
-        meta: { title: '环保管理', icon: 'permission' }
+        path: 'Mytasks',
+        name: 'Mytasks',
+        component: () => import('@/views/huanbao/Mytasks'),
+        meta: { title: 'huanbaoRoute.myTasks', icon: 'permission' }
+      },
+      {
+        path: 'Material_submitted',
+        name: 'Material_submitted',
+        component: () => import('@/views/huanbao/Material_submitted'),
+        meta: { title: 'huanbaoRoute.Material_submitted', icon: 'permission' }
+      },
+      {
+        path: 'Material_Search',
+        name: 'Material_Search',
+        component: () => import('@/views/huanbao/Material_Search'),
+        meta: { title: 'huanbaoRoute.Material_Search', icon: 'permission' }
       }
     ]
   },

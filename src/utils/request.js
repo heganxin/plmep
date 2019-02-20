@@ -1,8 +1,8 @@
 import axios from 'axios'
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.API_BASEURL, // api的base_url
-  // baseURL: 'http://172.24.8.39:8090',
+  // baseURL: process.env.API_BASEURL, // api的base_url
+  baseURL: 'http://plmtest.longcheer.com',
   timeout: 15000 // 请求超时时间
 })
 

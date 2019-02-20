@@ -2,6 +2,15 @@ import Cookies from 'js-cookie'
 
 const TokenKey = 'User-Token'
 const UserCode = 'UserCode'
+const guojihua = 'guojihua'
+
+export function getGuojihua () {
+  return Cookies.get(guojihua)
+}
+
+export function setGuojihua () {
+  return Cookies.set(guojihua)
+}
 
 export function getToken () {
   return Cookies.get(TokenKey)

@@ -2,6 +2,21 @@
  * Created by heganxin on 2019/2/15.
  */
 export default {
+  fengyangRoute: {
+    myTasks: 'My Tasks',
+    under_review: 'Under review',
+    sealed_Sample: 'Sealed Sample'
+  },
+  huanbaoRoute: {
+    myTasks: 'My Tasks',
+    Material_submitted: 'Material to be submitted',
+    Material_Search: 'Material Environmental Search'
+  },
+  tagsView: {
+    close: 'Close',
+    closeother: 'Close Other',
+    closeall: 'Close All'
+  },
   m: {
     music: 'Music',
     login: 'Login',

@@ -6,9 +6,14 @@ const app = {
       opened: !+Cookies.get('sidebarStatus'),
       withoutAnimation: false
     },
-    device: 'desktop'
+    device: 'desktop',
+    guojihua: localStorage.getItem('guojihua') || {}
   },
   mutations: {
+    SET_GUOJIHUA: (state, guojihua) => {
+      localStorage.setItem('guojihua', guojihua)
+      state.guojihua = guojihua
+    },
     TOGGLE_SIDEBAR: state => {
       if (state.sidebar.opened) {
         Cookies.set('sidebarStatus', 1)

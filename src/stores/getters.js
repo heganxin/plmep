@@ -1,6 +1,7 @@
 const getters = {
   sidebar: state => state.app.sidebar,
   device: state => state.app.device,
+  guojihua: state => state.app.guojihua,
   visitedViews: state => state.tagsView.visitedViews,
   cachedViews: state => state.tagsView.cachedViews,
   avatar: state => state.user.avatar,
