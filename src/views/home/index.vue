@@ -1,13 +1,15 @@
 <template>
     <div class="app-container">
       <button>gogogogogogogogo</button>
+      <svg-icon iconClass="menu"></svg-icon>
     </div>
 </template>
 <script>
 export default {
   name: 'HelloWorld',
   mounted: function () {
-    console.log('as', this.$store.getters.islogin)
+    //      { path: '*', redirect: '/404', hidden: true }])
+    console.log('as', this.$route)
   },
   methods: {
     handleClick () {

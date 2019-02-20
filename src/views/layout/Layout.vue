@@ -42,15 +42,14 @@ export default {
   },
   methods: {
     handleClickOutside () {
-      console.log('准备登出啦')
+      // console.log('准备登出啦')
       this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
     }
   }
 }
 </script>
-
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/mixin.scss";
+  @import 'src/styles/mixin.scss';
   .app-wrapper {
     @include clearfix;
     position: relative;

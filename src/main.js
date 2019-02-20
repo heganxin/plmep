@@ -6,6 +6,7 @@ import router from './router'
 import store from './stores'
 import '@/permission'
 import '@/icons' // icon
+import '@/styles/index.scss'
 // 引用全局UI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'

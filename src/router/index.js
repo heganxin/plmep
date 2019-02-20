@@ -6,7 +6,6 @@ Vue.use(Router)
 export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
-
   {
     path: '',
     component: Layout,
@@ -26,26 +25,20 @@ export default new Router({
   routes: constantRouterMap
 })
 export const asyncRouterMap = [
-  // {
-  //   path: '/permission',
-  //   component: Layout,
-  //   redirect: '/permission/users',
-  //   name: 'Permission',
-  //   meta: { title: '权限管理', icon: 'permission' },
-  //   children: [
-  //     {
-  //       path: 'users',
-  //       name: 'Users',
-  //       component: () => import('@/views/user/index'),
-  //       meta: { title: '用户管理', icon: 'user' }
-  //     },
-  //     {
-  //       path: 'depts',
-  //       name: 'Depts',
-  //       component: () => import('@/views/dept/index'),
-  //       meta: { title: '部门管理', icon: 'dept' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/huanbao',
+    component: Layout,
+    redirect: '/huanbao/index',
+    name: 'huanbao',
+    meta: { title: '环保', icon: 'issue' },
+    children: [
+      {
+        path: 'huanbaoindex',
+        name: 'huanbaoindex',
+        component: () => import('@/views/huanbao/index'),
+        meta: { title: '环保管理', icon: 'permission' }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]

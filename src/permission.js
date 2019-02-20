@@ -1,5 +1,5 @@
 import router from './router'
-// import store from './stores'
+import store from './stores'
 // import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
@@ -11,7 +11,8 @@ const whiteList = ['/login']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
-  if (getToken()) { // determine if there has token
+  console.log('getToken', getToken())
+  if (getToken() && getToken() !== 'false') { // determine if there has tokena
     // if (to.path === '/login') {
     //   next({ path: '/' })
     //   NProgress.done()
@@ -39,11 +40,20 @@ router.beforeEach((to, from, next) => {
     //     next()
     //   }
     // }
-    next()
+    console.log('permission_routers:', store.getters.permission_routers)
+    if (!store.getters.permission_routers) {
+      console.log('获取路由', store.getters.addRouters)
+      store.dispatch('GenerateRoutes')
+      router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+      next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+    } else {
+      next()
+    }
   } else {
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
     } else {
+      console.log('退出登录..')
       next('/login') // 否则全部重定向到登录页
       NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
     }

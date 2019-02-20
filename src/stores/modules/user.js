@@ -43,17 +43,11 @@ const user = {
     },
     LogOut ({ commit, state }) {
       return new Promise((resolve, reject) => {
-        // logout().then(response => {
-        //   commit('SET_USERINFO', '')
-        //   commit('SET_TOKEN', '')
-        //   setName('')
-        //   setToken(false)
-        //   //removeName()
-        //   //removeToken()
-        //   resolve(response)
-        // }).catch(error => {
-        //   reject(error)
-        // })
+        commit('SET_USERINFO', '')
+        commit('SET_TOKEN', '')
+        setToken(false)
+        // removeName()
+        // removeToken()
       })
     },
     FedLogOut ({ commit }) {

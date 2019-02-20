@@ -9,9 +9,9 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
  */
 function recursionRouter (userRouter = [], allRouter = []) {
   var realRoutes = []
-  allRouter.forEach((v) => {
+  allRouter.forEach((v, i) => {
     if (v.meta) {
-      userRouter.forEach((item) => {
+      userRouter.forEach((item, index) => {
         // if (item.title === '问题管理' && v.meta.title === '问题管理') {
         //   debugger
         // }
@@ -42,35 +42,38 @@ const permission = {
     }
   },
   actions: {
-    /* GenerateRoutes({ commit }, data) {
-        return new Promise(resolve => {
-          const { roles } = data
-          let accessedRouters
-          if (roles.indexOf('admin') >= 0) {
-            accessedRouters = asyncRouterMap
-          } else {
-            accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
-          }
-          console.log(accessedRouters)
-          commit('SET_ROUTERS', accessedRouters)
-          resolve()
-        })
-      } */
     GenerateRoutes ({ commit }, data) {
       return new Promise((resolve, reject) => {
-        const { roles } = data
-        console.log('开始获取路由,角色为：' + JSON.stringify(roles))
-        // getUserRouters(roles).then(response => {
-        // console.log('路由返回response', response)
-        const dynamicRouter = {}
+        const dynamicRouter = [
+          {
+            cfunid: '1000',
+            fun_code: '1003',
+            redirect: '/huanbao',
+            fun_level: 1,
+            fun_name: 'huanbao',
+            funurl: '/weekly',
+            title: '环保',
+            meta: { title: '环保', icon: 'permission' },
+            children: [
+              {
+                cfunid: '100010',
+                title: '环保管理',
+                fun_level: 2,
+                parent_id: '1000',
+                name: 'huanbaoindex',
+                funurl: '/huanbao/index',
+                meta: { title: '环保管理', icon: 'permission' }
+              }
+            ]}]
         // let accessedRouters
         // if (roles.indexOf('admin') >= 0) {
         //   accessedRouters = asyncRouterMap
         // } else {
         //   accessedRouters = recursionRouter(dynamicRouter, asyncRouterMap)
         // }
+        console.log('asyncRouterMap', asyncRouterMap)
         var accessedRouters = recursionRouter(dynamicRouter, asyncRouterMap)
-        console.log(accessedRouters)
+        console.log('accessedRouters', accessedRouters)
         commit('SET_ROUTERS', accessedRouters)
         resolve()
         // }).catch(error => {

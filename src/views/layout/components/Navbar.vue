@@ -85,7 +85,7 @@ export default {
     return {
       loginName: '',
       textMap: '',
-      avatarImage: '',
+      avatarImage: 'https://pic.qqtn.com/up/2014-7/14065364718533842.gif',
       dialogFormVisible: false,
       users: [],
       changePassword: {
@@ -128,6 +128,7 @@ export default {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+      location.reload()
     },
     changePdUI () {
       this.textMap = '修改密码'
