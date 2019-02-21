@@ -48,21 +48,21 @@ const permission = {
           {
             cfunid: '1000',
             fun_code: '1001',
-            redirect: '/Mytasks',
+            redirect: '/fMytasks',
             fun_level: 1,
             fun_name: '',
             // funurl: '/fengyang',
             title: '',
-            meta: { title: '环保', icon: 'permission' },
+            meta: { title: 'fengyangRoute.myTasks', icon: 'permission' },
             children: [
               {
                 cfunid: '100010',
-                title: '我的任务',
+                title: 'fengyangRoute.myTasks',
                 fun_level: 2,
                 parent_id: '1000',
-                name: 'Mytasks',
-                funurl: '/Mytasks',
-                meta: { title: '我的任务', icon: 'permission' }
+                name: 'fMytasks',
+                funurl: '/fMytasks',
+                meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
               }]
           }]
         /* const dynamicRouter = [

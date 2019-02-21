@@ -26,14 +26,14 @@ export default new Router({
 })
 export const asyncRouterMap = [
   {
-    path: '/Mytasks',
+    path: '/fMytasks',
     component: Layout,
-    redirect: '/Mytasks',
+    redirect: '/fMytasks',
     children: [{
-      path: 'Mytasks',
+      path: 'fMytasks',
       component: () => import('@/views/fengyang/Mytasks'),
-      name: 'Mytasks',
-      meta: { title: '我的任务', icon: 'home', noCache: true }
+      name: 'fMytasks',
+      meta: { title: 'fengyangRoute.myTasks', icon: 'issue', noCache: true }
     }]
   },
   {
