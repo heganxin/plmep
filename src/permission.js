@@ -3,7 +3,7 @@ import store from './stores'
 // import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
-import { getToken } from '@/utils/auth' // getToken from cookie
+import { getUserInfo } from '@/utils/auth' // getToken from cookie
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
@@ -11,39 +11,10 @@ const whiteList = ['/login']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
-  console.log('getToken', getToken())
-  if (getToken() && getToken() !== 'false') { // determine if there has tokena
-    // if (to.path === '/login') {
-    //   next({ path: '/' })
-    //   NProgress.done()
-    // } else {
-    //   if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-    //     store.dispatch('GetInfo').then(res => { // 拉取user_info
-    //       const roles = res.data.roles // note: roles must be a array! such as: ['editor','develop']
-    //       store.dispatch('GenerateRoutes', { roles }).then(() => { // 根据roles权限生成可访问的路由表
-    //         router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-    //         next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-    //       }).catch((e) => {
-    //         store.dispatch('LogOut').then(() => {
-    //           // Message.error(e || 'Verification failed, please login again')
-    //           next({ path: '/' })
-    //         })
-    //       })
-    //     }).catch((err) => {
-    //       // debugger
-    //       store.dispatch('FedLogOut').then(() => {
-    //         Message.error(err || 'Verification failed, please login again')
-    //         next({ path: '/' })
-    //       })
-    //     })
-    //   } else {
-    //     next()
-    //   }
-    // }
-    console.log('permission_routers:', store.getters.permission_routers)
+  console.log('getUserInfo', getUserInfo())
+  if (getUserInfo() && getUserInfo() !== 'false') { // determine if there has tokena
     if (!store.getters.permission_routers) {
-      console.log('获取路由', store.getters.addRouters)
-      store.dispatch('GenerateRoutes')
+      store.dispatch('GenerateRoutes', store.getters.userInfo)
       router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
       next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
     } else {

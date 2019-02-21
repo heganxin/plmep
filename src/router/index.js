@@ -29,65 +29,49 @@ export const asyncRouterMap = [
     path: '/fMytasks',
     component: Layout,
     redirect: '/fMytasks',
+    meta: { title: 'fengyangRoute.myTasks', icon: 'issue' },
     children: [{
       path: 'fMytasks',
       component: () => import('@/views/fengyang/Mytasks'),
       name: 'fMytasks',
-      meta: { title: 'fengyangRoute.myTasks', icon: 'issue', noCache: true }
+      meta: { title: 'fengyangRoute.myTasks', icon: 'issue' }
     }]
   },
   {
-    path: '/fengyang',
+    path: '/hMytasks',
     component: Layout,
-    redirect: '/fengyang/index',
-    name: 'fengyang',
-    meta: { title: '封样', icon: 'issue' },
-    children: [
-      {
-        path: 'Mytasks',
-        name: 'Mytasks',
-        component: () => import('@/views/fengyang/Mytasks'),
-        meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
-      },
-      {
-        path: 'under_review',
-        name: 'under_review',
-        component: () => import('@/views/fengyang/Under_Review'),
-        meta: { title: 'fengyangRoute.under_review', icon: 'permission' }
-      },
-      {
-        path: 'sealed_Sample',
-        name: 'sealed_Sample',
-        component: () => import('@/views/fengyang/Sealed_Sample'),
-        meta: { title: 'fengyangRoute.sealed_Sample', icon: 'permission' }
-      }
-    ]
-  }, {
-    path: '/huanbao',
+    redirect: '/hMytasks',
+    meta: { title: 'huanbaoRoute.myTasks', icon: 'user' },
+    children: [{
+      path: 'hMytasks',
+      component: () => import('@/views/huanbao/Mytasks'),
+      name: 'hMytasks',
+      meta: { title: 'huanbaoRoute.myTasks', icon: 'user', noCache: true }
+    }]
+  },
+  {
+    path: '/submitted',
     component: Layout,
-    redirect: '/huanbao/index',
-    name: 'huanbao',
-    meta: { title: '环保', icon: 'issue' },
-    children: [
-      {
-        path: 'Mytasks',
-        name: 'Mytasks',
-        component: () => import('@/views/huanbao/Mytasks'),
-        meta: { title: 'huanbaoRoute.myTasks', icon: 'permission' }
-      },
-      {
-        path: 'Material_submitted',
-        name: 'Material_submitted',
-        component: () => import('@/views/huanbao/Material_submitted'),
-        meta: { title: 'huanbaoRoute.Material_submitted', icon: 'permission' }
-      },
-      {
-        path: 'Material_Search',
-        name: 'Material_Search',
-        component: () => import('@/views/huanbao/Material_Search'),
-        meta: { title: 'huanbaoRoute.Material_Search', icon: 'permission' }
-      }
-    ]
+    redirect: '/submitted',
+    meta: { title: 'huanbaoRoute.Material_submitted', icon: 'dashboard' },
+    children: [{
+      path: 'submitted',
+      component: () => import('@/views/huanbao/Material_submitted'),
+      name: 'submitted',
+      meta: { title: 'huanbaoRoute.Material_submitted', icon: 'issue', noCache: true }
+    }]
+  },
+  {
+    path: '/search',
+    component: Layout,
+    redirect: '/search',
+    meta: { title: 'huanbaoRoute.Material_Search', icon: 'dashboard' },
+    children: [{
+      path: 'search',
+      component: () => import('@/views/huanbao/Material_Search'),
+      name: 'search',
+      meta: { title: 'huanbaoRoute.Material_Search', icon: 'dashboard', noCache: true }
+    }]
   },
   { path: '*', redirect: '/404', hidden: true }
 ]

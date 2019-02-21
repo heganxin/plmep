@@ -9,7 +9,6 @@ export default {
   name: 'HelloWorld',
   mounted: function () {
     //      { path: '*', redirect: '/404', hidden: true }])
-    console.log('as', this.$route)
   },
   methods: {
     handleClick () {

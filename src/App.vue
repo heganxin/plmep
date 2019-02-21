@@ -8,7 +8,9 @@
 export default {
   name: 'App',
   created: function () {
-    this.$i18n.locale = this.$store.getters.guojihua
+    if (this.$store.getters.guojihua) {
+      this.$i18n.locale = this.$store.getters.guojihua
+    }
   }
 }
 </script>

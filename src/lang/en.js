@@ -2,6 +2,19 @@
  * Created by heganxin on 2019/2/15.
  */
 export default {
+  error: {
+    username_not_exist: 'account is not exist',
+    password_error: 'password error'
+  },
+  table: {
+    name: 'Name',
+    theme: 'Theme',
+    state: 'State',
+    tasksType: 'Type',
+    context: 'Context',
+    role: 'Role',
+    allocated: 'Already allocated'
+  },
   fengyangRoute: {
     myTasks: 'My Tasks',
     under_review: 'Under review',

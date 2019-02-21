@@ -38,8 +38,8 @@
   </div>
 </template>
 <script>
-import { setToken } from '@/utils/auth' // getToken from cookie
-// import { login } from '@/api/login'
+// import { setToken } from '@/utils/auth' // getToken from cookie
+import { login } from '@/api/login'
 
 export default {
   name: 'login',
@@ -60,15 +60,25 @@ export default {
       } else if (!this.temp.password) {
         this.$message(this.$t('validate.password'))
       } else {
-        /* login('lcadmin', 'lcadmin').then(r => {
-          console.log('r', r)
-          setToken('12313')
-        }) */
-        this.$store.commit('SET_USERINFO', {name: '姚远'})
-        this.$store.commit('SET_ISLOGIN', true)
-        setToken('12313')
-        this.$router.push({ path: '/home' })
         this.loading = true
+        login(this.temp.username, this.temp.password).then(r => {
+          console.log('登录返回信息->', r.data.result)
+          if (r.data.msg !== '') {
+            this.$message(this.$t(r.data.msg))
+            this.loading = false
+            return
+          }
+
+          this.$store.commit('SET_USERINFO', {username: this.temp.username, password: this.temp.password, type: r.data.type})
+          this.$store.commit('SET_ISLOGIN', true)
+          this.$router.push({ path: '/home' })
+          this.loading = false
+        }, r => {
+          console.log('登录返回信息->', r)
+          this.loading = false
+        })
+        // this.$store.commit('SET_USERINFO', {name: '姚远'})
+        // this.$store.commit('SET_ISLOGIN', true)
       }
     }
   },

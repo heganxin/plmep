@@ -8,6 +8,8 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
  * @return {Array} realRoutes 过滤后的路由
  */
 function recursionRouter (userRouter = [], allRouter = []) {
+  console.log('userRouter', userRouter)
+  console.log('allRouter', allRouter)
   var realRoutes = []
   allRouter.forEach((v, i) => {
     if (v.meta) {
@@ -15,6 +17,7 @@ function recursionRouter (userRouter = [], allRouter = []) {
         // if (item.title === '问题管理' && v.meta.title === '问题管理') {
         //   debugger
         // }
+        console.log('-------------------->', v.meta.title + '----' + item.title)
         if (item.title === v.meta.title) {
           if (item.children && item.children.length > 0) {
             v.children = recursionRouter(item.children, v.children)
@@ -26,6 +29,7 @@ function recursionRouter (userRouter = [], allRouter = []) {
       realRoutes.push(v)
     }
   })
+  console.log('end realRoutes', realRoutes)
   // debugger
   return realRoutes
 }
@@ -44,74 +48,92 @@ const permission = {
   actions: {
     GenerateRoutes ({ commit }, data) {
       return new Promise((resolve, reject) => {
-        const dynamicRouter = [
-          {
-            cfunid: '1000',
-            fun_code: '1001',
-            redirect: '/fMytasks',
-            fun_level: 1,
-            fun_name: '',
-            // funurl: '/fengyang',
-            title: '',
-            meta: { title: 'fengyangRoute.myTasks', icon: 'permission' },
-            children: [
-              {
-                cfunid: '100010',
-                title: 'fengyangRoute.myTasks',
-                fun_level: 2,
-                parent_id: '1000',
-                name: 'fMytasks',
-                funurl: '/fMytasks',
-                meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
-              }]
-          }]
-        /* const dynamicRouter = [
-          {
-            cfunid: '1000',
-            fun_code: '1003',
-            redirect: '/fengyang',
-            fun_level: 1,
-            fun_name: 'fengyang',
-            // funurl: '/fengyang',
-            title: '封样',
-            meta: { title: '环保', icon: 'permission' },
-            children: [
-              {
-                cfunid: '100010',
-                title: 'fengyangRoute.myTasks',
-                fun_level: 2,
-                parent_id: '1000',
-                name: 'Mytasks',
-                funurl: '/fengyang/Mytasks',
-                meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
-              },
-              {
-                cfunid: '100020',
-                title: 'fengyangRoute.under_review',
-                fun_level: 2,
-                parent_id: '1000',
-                name: 'under_review',
-                funurl: '/fengyang/under_review',
-                meta: { title: 'fengyangRoute.under_review', icon: 'permission' }
-              },
-              {
-                cfunid: '100030',
-                title: 'fengyangRoute.sealed_Sample',
-                fun_level: 2,
-                parent_id: '1000',
-                name: 'sealed_Sample',
-                funurl: '/fengyang/sealed_Sample',
-                meta: { title: 'fengyangRoute.sealed_Sample', icon: 'permission' }
-              }
-            ]}] */
-        // let accessedRouters
-        // if (roles.indexOf('admin') >= 0) {
-        //   accessedRouters = asyncRouterMap
-        // } else {
-        //   accessedRouters = recursionRouter(dynamicRouter, asyncRouterMap)
-        // }
-        console.log('asyncRouterMap', asyncRouterMap)
-        var accessedRouters = recursionRouter(dynamicRouter, asyncRouterMap)
+        const dynamicRouter = [{
+          cfunid: '1000',
+          fun_code: '1001',
+          redirect: '/fMytasks',
+          fun_level: 1,
+          fun_name: '',
+          // funurl: '/fengyang',
+          title: 'fengyangRoute.myTasks',
+          meta: { title: 'fengyangRoute.myTasks', icon: 'permission' },
+          children: [
+            {
+              cfunid: '100010',
+              title: 'fengyangRoute.myTasks',
+              fun_level: 2,
+              parent_id: '1000',
+              name: 'fMytasks',
+              funurl: '/fMytasks',
+              meta: { title: 'fengyangRoute.myTasks', icon: 'permission' }
+            }]
+        }]
+        const dynamicRouter2 = [{
+          cfunid: '1000',
+          fun_code: '1001',
+          redirect: '/hMytasks',
+          fun_level: 1,
+          fun_name: '',
+          // funurl: '/fengyang',
+          title: 'huanbaoRoute.myTasks',
+          meta: { title: 'huanbaoRoute.myTasks', icon: 'permission' },
+          children: [
+            {
+              cfunid: '100010',
+              title: 'huanbaoRoute.myTasks',
+              fun_level: 2,
+              parent_id: '1000',
+              name: 'hMytasks',
+              funurl: '/hMytasks',
+              meta: { title: 'huanbaoRoute.myTasks', icon: 'permission' }
+            }]
+        },
+        {
+          cfunid: '1004',
+          fun_code: '1005',
+          redirect: '/submitted',
+          fun_level: 1,
+          fun_name: '',
+          // funurl: '/fengyang',
+          title: 'huanbaoRoute.Material_submitted',
+          meta: { title: 'huanbaoRoute.Material_submitted', icon: 'permission' },
+          children: [
+            {
+              cfunid: '100012',
+              title: 'huanbaoRoute.Material_submitted',
+              fun_level: 2,
+              parent_id: '1000',
+              name: 'submitted',
+              funurl: '/submitted',
+              meta: { title: 'huanbaoRoute.Material_submitted', icon: 'permission' }
+            }]
+        },
+        {
+          cfunid: '1002',
+          fun_code: '1003',
+          redirect: '/search',
+          fun_level: 1,
+          fun_name: '',
+          // funurl: '/fengyang',
+          title: 'huanbaoRoute.Material_Search',
+          meta: { title: 'huanbaoRoute.Material_Search', icon: 'permission' },
+          children: [
+            {
+              cfunid: '100011',
+              title: 'huanbaoRoute.Material_Search',
+              fun_level: 2,
+              parent_id: '1002',
+              name: 'search',
+              funurl: '/search',
+              meta: { title: 'huanbaoRoute.Material_Search', icon: 'permission' }
+            }]
+        }]
+        var accessedRouters
+        if (data.type === '封样') {
+          accessedRouters = recursionRouter(dynamicRouter, asyncRouterMap)
+        } else {
+          accessedRouters = recursionRouter(dynamicRouter2, asyncRouterMap)
+        }
         console.log('accessedRouters', accessedRouters)
         commit('SET_ROUTERS', accessedRouters)
         resolve()

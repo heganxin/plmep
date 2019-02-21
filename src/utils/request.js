@@ -46,27 +46,7 @@ service.interceptors.response.use(
   //   return response.data
   // }
   function (response) {
-    var code = response.data.Code === undefined ? null : response.data.Code
-    var msg = response.data.Msg === undefined ? null : response.data.Msg
-    if (code !== null) {
-      if (code !== '2000') {
-        /* Message({
-          message: msg,
-          type: 'error',
-          duration: 5 * 1000
-        }) */
-        return Promise.reject(msg)
-      } else {
-        /* Message({
-          message: msg,
-          type: 'error',
-          duration: 5 * 1000
-        }) */
-        return Promise.reject(msg)
-      }
-    } else {
-      return response
-    }
+    return response
   },
   error => {
     console.log('err' + error)// for debug

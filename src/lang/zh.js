@@ -2,6 +2,19 @@
  * Created by heganxin on 2019/2/15.
  */
 export default {
+  error: {
+    username_not_exist: '账号不存在',
+    password_error: '密码错误'
+  },
+  table: {
+    name: '名称',
+    theme: '主题',
+    state: '状态',
+    tasksType: '状况',
+    context: '上下文',
+    role: '角色',
+    allocated: '已分配'
+  },
   fengyangRoute: {
     myTasks: '我的任务',
     under_review: '正在审阅',

@@ -21,7 +21,6 @@ import SidebarItem from './SidebarItem'
 export default {
   components: { SidebarItem },
   created: function () {
-    console.log(this.$store)
   },
   computed: {
     ...mapGetters([

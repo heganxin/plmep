@@ -2,7 +2,7 @@
  * Created by heganxin on 2019/2/18.
  */
 import { login } from '@/api/login'
-import { setToken } from '@/utils/auth'
+import Cookies from 'js-cookie'
 
 const user = {
   state: {
@@ -17,6 +17,7 @@ const user = {
     },
     SET_USERINFO: (state, userInfo) => {
       localStorage.setItem('userInfo', JSON.stringify(userInfo))
+      Cookies.set('userInfo', JSON.stringify(userInfo))
       state.userInfo = userInfo
     },
     SET_TOKEN: (state, token) => {
@@ -36,16 +37,14 @@ const user = {
           commit('SET_USERINFO', data.name)
           commit('SET_TOKEN', data.token)
           // setName(data.name)
-          setToken(data.token)
           resolve(response)
         }).catch(error => { reject(error) })
       })
     },
     LogOut ({ commit, state }) {
       return new Promise((resolve, reject) => {
-        commit('SET_USERINFO', '')
+        commit('SET_USERINFO', false)
         commit('SET_TOKEN', '')
-        setToken(false)
         // removeName()
         // removeToken()
       })
