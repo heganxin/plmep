@@ -60,7 +60,7 @@ export default {
       } else if (!this.temp.password) {
         this.$message(this.$t('validate.password'))
       } else {
-        /* login('admin', 'admin').then(r => {
+        /* login('lcadmin', 'lcadmin').then(r => {
           console.log('r', r)
           setToken('12313')
         }) */
